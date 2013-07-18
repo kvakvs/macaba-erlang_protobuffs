@@ -833,7 +833,7 @@ generate_field_definitions([{Name, _, Default} | Tail], Acc) ->
 
 %% @hidden
 atomize(String) ->
-    list_to_atom(string:to_lower(String)).
+    list_to_atom(string:to_lower(lists:flatten(String))).
 
 %% @hidden
 replace_atom(Find, Find, Replace) -> Replace;
