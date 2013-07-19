@@ -833,7 +833,10 @@ generate_field_definitions([{Name, _, Default} | Tail], Acc) ->
 
 %% @hidden
 atomize(String) ->
-    list_to_atom(string:to_lower(lists:flatten(String))).
+    case String of
+        [X|_] when is_list(X) -> list_to_atom(string:to_lower(X));
+        X -> list_to_atom(string:to_lower(X))
+    end.
 
 %% @hidden
 replace_atom(Find, Find, Replace) -> Replace;
